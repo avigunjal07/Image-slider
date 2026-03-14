@@ -57,11 +57,45 @@
     <div class="slider-container">
     <img src="./images/autumn.jpg" class="slide" id="slide">
 
-    <img src="./images/back.png" class="nav" id="back">
+    <img src="./images/back.png" class="nav" id="back" onclick="backSlide()">
 
-    <img src="./images/next.png" class="nav" id="next">
+    <img src="./images/next.png" class="nav" id="next" onclick="nextSlide()">
 </div>
 
-    <div class="season-name"><h1>*** Autumn ***</h1></div>
+    <div class="season-name" id="season-name"><h1>*** Autumn ***</h1></div>
+
+<script>
+    let slide=document.getElementById("slide");
+
+    let imgArray=["./images/autumn.jpg","./images/summer.jpg","./images/spring.jpg","./images/monsoon.jpg","./images/prewinter.jpg","./images/winter.jpg"];
+
+    let seasonArray=["Autumn","Summer","Spring","Monsoon","Pre-Winter","Winter"];
+
+    let seasonName=document.getElementById("season-name");
+
+    let index=0;
+
+    function nextSlide(){
+        if(index>=imgArray.length-1){
+            index=0;
+        }
+        else{
+            index++;
+        }
+        slide.src=imgArray[index];
+        seasonName.innerHTML=`<h1>*** ${seasonArray[index]} ***</h1>`;
+    };
+
+    function backSlide(){
+        if(index<=0){
+            index=imgArray.length-1;
+        }
+        else{
+            index--;
+        }
+        slide.src=imgArray[index];
+    }
+</script>
+
 </body>
 </html>
